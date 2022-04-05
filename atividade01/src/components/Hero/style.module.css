@@ -1,0 +1,98 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 320px;
+    max-height: 480px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.nameContainer {
+    position: absolute;
+    top: -100px;
+    left: 0px;
+    width: 100%;
+    height: 120px;
+    margin-top: 0;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgb(0, 0, 0) 25%, transparent 75%);
+    transition: all ease-in 0.3s;
+}
+
+.container h2 {
+    color: #fff;
+    margin: 1rem;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    background-position: center ;
+    background-size: cover;
+    border-radius: 10px;
+    filter: grayscale(0%);
+    transition: all ease-in 0.2s;
+    cursor: pointer;
+}
+
+.information {
+    position: absolute;
+    bottom: calc(10px - 100vh);
+    left: 0;
+    background: #131313;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px -4px 20px #DBF1FD;
+    transition: all ease-in 0.3s;
+}
+
+.information ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.information ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 106px;
+}
+
+.information ul li h3 {
+    color: #fff;
+}
+
+.information ul li div {
+    text-align: center;
+}
+
+.information ul li div span {
+    margin-right: 0.3rem;
+    color: #D4AF37;
+    font-weight: bold;
+}
+
+.information ul li div sup {
+    color: #D4AF37;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #4a94a3;
+}
+
+.container:hover .imageContainer {
+    filter: grayscale(100%);
+}
+
+.container:hover .information {
+    bottom: 0px;
+}
+
+.container:hover .nameContainer {
+    top: 0px;
+}
