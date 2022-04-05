@@ -184,7 +184,7 @@ function App() {
   return (
     <div className="App">
       <World>
-          <Arena arena="New York">
+          <Arena arena="Andromeda">
               <Hero name="Silver Surfer" image={SilverSurferImg} statuses={statuses[0]}/>
               <img  className="app-versus" src={VersusImg} alt="versus"/>
               <Enemy name="Galactus" image={Galactus} statuses={statuses[1]} />
@@ -194,7 +194,7 @@ function App() {
               <img  className="app-versus" src={VersusImg} alt="versus"/>
               <Enemy name="Abomination" image={AbominationImg} statuses={statuses[3]} />
           </Arena>
-          <Arena arena="New York">
+          <Arena arena="Washington">
               <Hero name="Wonder Woman" image={WonderWomanImg} statuses={statuses[4]} />
               <img  className="app-versus" src={VersusImg} alt="versus"/>
               <Enemy name="Giganta" image={GigantaImg} statuses={statuses[5]} />
