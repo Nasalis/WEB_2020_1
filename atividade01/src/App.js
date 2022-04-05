@@ -184,6 +184,7 @@ function App() {
   return (
     <div className="App">
       <World>
+          <h1 style={{color: "#fff"}}>Passe o mouse por cima dos cards</h1>
           <Arena arena="Andromeda">
               <Hero name="Silver Surfer" image={SilverSurferImg} statuses={statuses[0]}/>
               <img  className="app-versus" src={VersusImg} alt="versus"/>
