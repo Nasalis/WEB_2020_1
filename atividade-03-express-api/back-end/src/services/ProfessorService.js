@@ -1,4 +1,4 @@
-const StudentModel = require("../model/StudentModel")
+const ProfessorModel = require("../model/ProfessorMode")
 
 let professors = [
     {_id:0, name:"Jefferson de Carvalho", university: "UFC", degree: "Mestre"},
@@ -12,7 +12,7 @@ let _id = professors.length;
 
 class ProfessorService {
     static create(data) {
-        let newProfessor = new StudentModel(
+        let newProfessor = new ProfessorModel(
             _id++,
             data.name,
             data.university,
