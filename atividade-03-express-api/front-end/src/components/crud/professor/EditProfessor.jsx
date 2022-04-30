@@ -51,7 +51,7 @@ function EditProfessor() {
                         <input type="text"
                             className="form-control"
                             value={university ?? ""}
-                            name="course"
+                            name="university"
                             onChange={(event) => { setUniversity(event.target.value) }} />
                     </div>
                     <div className="form-group">
@@ -59,7 +59,7 @@ function EditProfessor() {
                         <input type="text"
                             className="form-control"
                             value={degree ?? 0}
-                            name="ira"
+                            name="degree"
                             onChange={(event) => { setDegree(event.target.value) }} />
                     </div>
                     <div className="form-group" style={{ paddingTop: 20 }}>
