@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { professors } from "../data";
+import axios from "axios";
 
 function CreateProfessor() {
 
     const [name,setName] = useState("")
     const [university,setUniversity] = useState("")
     const [degree,setDegree] = useState("")
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        professors.push({id: professors.length, name, university, degree})
-    }
+        const newProfessor = {name, university, degree}
+        axios.post("http://localhost:3002/crud/professors/create/", newProfessor)
+            .then(response => navigate("/listProfessor"))
+            .catch(error => console.log(error))
+    }   
 
     return (
         <>
@@ -26,6 +31,7 @@ function CreateProfessor() {
                                className="form-control" 
                                value={(name==null || name===undefined)?"":name}
                                name="name" 
+                               required
                                onChange={(event)=>{setName(event.target.value)}}/>
                     </div>
                     <div className="form-group">
@@ -33,7 +39,8 @@ function CreateProfessor() {
                         <input type="text" 
                                className="form-control"
                                value={university ?? ""}
-                               name="course" 
+                               name="university" 
+                               required
                                onChange={(event)=>{setUniversity(event.target.value)}}/>
                     </div>
                     <div className="form-group">
@@ -41,7 +48,8 @@ function CreateProfessor() {
                         <input type="text" 
                                className="form-control"
                                value={degree ?? "Mestrado"}
-                               name="ira" 
+                               name="degree" 
+                               required
                                onChange={(event)=>{setDegree(event.target.value)}}/>
                     </div>
                     <div className="form-group" style={{paddingTop:20}}>
