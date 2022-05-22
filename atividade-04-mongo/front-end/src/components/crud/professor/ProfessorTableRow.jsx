@@ -7,7 +7,7 @@ const ProfessorTableRow = ({professor, deleteProfessorById}) => {
 
     function deleteStudent() {
         if (window.confirm(`Deseja excluir o professor ${name}?`)) {
-            axios.delete(`http://localhost:3002/crud/professors/delete/${_id}`)
+            axios.delete(`http://localhost:3002/professors/delete/${_id}`)
             .then(response => deleteProfessorById(_id))
             .catch(error => console.log(error))
         }
@@ -15,9 +15,6 @@ const ProfessorTableRow = ({professor, deleteProfessorById}) => {
 
     return (
         <tr>
-            <td>
-                {_id}
-            </td>
             <td>
                 {name}
             </td>

@@ -7,7 +7,7 @@ const StudentTableRow = ({student, deleteStudentById}) => {
 
     function deleteStudent() {
         if (window.confirm(`Deseja excluir o estudante ${name}?`)) {
-            axios.delete(`http://localhost:3002/crud/students/delete/${_id}`)
+            axios.delete(`http://localhost:3002/students/delete/${_id}`)
             .then(response => deleteStudentById(_id))
             .catch(error => console.log(error))
         }
@@ -15,9 +15,6 @@ const StudentTableRow = ({student, deleteStudentById}) => {
 
     return (
         <tr>
-            <td>
-                {_id}
-            </td>
             <td>
                 {name}
             </td>
