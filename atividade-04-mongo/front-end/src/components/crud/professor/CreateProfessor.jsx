@@ -13,7 +13,7 @@ function CreateProfessor() {
     const handleSubmit = (event) => {
         event.preventDefault()
         const newProfessor = {name, university, degree}
-        axios.post("http://localhost:3002/crud/professors/create/", newProfessor)
+        axios.post("http://localhost:3002/professors/create/", newProfessor)
             .then(response => navigate("/listProfessor"))
             .catch(error => console.log(error))
     }   

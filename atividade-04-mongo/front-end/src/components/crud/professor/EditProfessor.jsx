@@ -13,7 +13,7 @@ function EditProfessor() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:3002/crud/professors/list/${params.id}`)
+        axios.get(`http://localhost:3002/professors/list/${params.id}`)
         .then(response => {
             setName(response.data.name)
             setUniversity(response.data.university)
@@ -26,7 +26,7 @@ function EditProfessor() {
     const handleSubmit = (event) => {
         event.preventDefault()
         const updatedProfessor = { name, university, degree }
-        axios.put(`http://localhost:3002/crud/professors/update/${params.id}`, updatedProfessor)
+        axios.put(`http://localhost:3002/professors/update/${params.id}`, updatedProfessor)
             .then(response => navigate("/listProfessor"))
             .catch(error => console.log(error))
     }

@@ -8,7 +8,7 @@ function ListProfessor() {
     const [professors, setProfessors] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3002/crud/professors/list")
+        axios.get("http://localhost:3002/professors/list")
         .then(response => setProfessors(response.data))
         .catch(error => error)
     }, [])

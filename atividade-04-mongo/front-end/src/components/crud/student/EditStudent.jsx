@@ -12,7 +12,7 @@ function EditStudent() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:3002/crud/students/list/${params.id}`)
+        axios.get(`http://localhost:3002/students/list/${params.id}`)
         .then(response => {
             setName(response.data.name)
             setCourse(response.data.course)
@@ -24,7 +24,7 @@ function EditStudent() {
     const handleSubmit = (event) => {
         event.preventDefault()
         const updatedStudent = { name, course, ira }
-        axios.put(`http://localhost:3002/crud/students/update/${params.id}`, updatedStudent)
+        axios.put(`http://localhost:3002/students/update/${params.id}`, updatedStudent)
             .then(response => navigate("/listStudent"))
             .catch(error => console.log(error))
     }
