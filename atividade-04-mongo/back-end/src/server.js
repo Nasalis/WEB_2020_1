@@ -2,8 +2,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const studentRoutes = require('../src/routes/student/studentRoute');
-const professorRoutes = require('../src/routes/professor/professorRoute');
+require('./db/mongo.connection');
+
+const studentRoutes = require("./routes/student/students.routes.mongo");
+const professorRoutes = require('./routes/professor/professor.routes.mongo');
+
 
 
 const app = express();
@@ -19,8 +22,8 @@ app.use((request, response, next) => {
     next();
 });
 
-app.use('/crud/students', studentRoutes)
-app.use('/crud/professors', professorRoutes)
+app.use('/students', studentRoutes)
+app.use('/professors', professorRoutes)
 
 
 module.exports = app;
