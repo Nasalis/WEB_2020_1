@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 //import "./App.css";
 
 import { Home } from "./components/Home";
@@ -11,9 +11,54 @@ import EditStudent from "./components/crud/student/EditStudent";
 import CreateProfessor from "./components/crud/professor/CreateProfessor";
 import ListProfessor from "./components/crud/professor/ListProfessor";
 import EditProfessor from "./components/crud/professor/EditProfessor";
+import SignUpPage from "./pages/SignUp";
+import FirebaseUserService from "./services/FireBaseUserService";
+import ToastApp from "./components/Toast";
 
 
-function App() {
+function App(props) {
+  const [logged, setLogged] = useState(false)
+
+  const [showToast, setShowToast] = useState(false); //TOAST
+  const [toast, setToast] = useState({ header: '', body: '' }) //TOAST
+
+  const navigate = useNavigate()
+
+  const logout = () => {
+    FirebaseUserService.logout(
+      props.firebase.getAuthentication(),
+      (res) => {
+        if (res) {
+          props.firebase.setUser(null)
+          setLogged(false)
+          navigate('/')
+        }
+      }
+    )
+  }
+
+  const renderLoginButtonLogout = () => {
+    if (props.firebase.getUser() != null)
+      return (
+        <div style={{ marginRight: 20 }}>
+          Olá, {props.firebase.getUser().email}
+          <button onClick={() => logout()} style={{ marginLeft: 20 }}>Logout</button>
+        </div>
+      )
+    return
+  }
+
+  //TOAST
+  const renderToast = () => {
+    return <ToastApp
+      show={showToast}
+      header={toast.header}
+      body={toast.body}
+      setShowToast={setShowToast}
+      bg='secondary'
+    />
+  }
+
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -65,13 +110,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="createStudent" element={<CreateStudent />} />
-        <Route path="listStudent" element={<ListStudent />} />
-        <Route path="editStudent/:id" element={<EditStudent />} />
+        <Route path="signup" element={<SignUpPage setLogged={setLogged} setShowToast={setShowToast} setToast={setToast}/>} />
 
-        <Route path="createProfessor" element={<CreateProfessor />} />
-        <Route path="listProfessor" element={<ListProfessor />} />
-        <Route path="editProfessor/:id" element={<EditProfessor />} />
+        <Route path="createStudent" element={<CreateStudent setShowToast={setShowToast} setToast={setToast}/>} />
+        <Route path="listStudent" element={<ListStudent setShowToast={setShowToast} setToast={setToast}/>} />
+        <Route path="editStudent/:id" element={<EditStudent setShowToast={setShowToast} setToast={setToast}/>} />
+
+        <Route path="createProfessor" element={<CreateProfessor setShowToast={setShowToast} setToast={setToast}/>} />
+        <Route path="listProfessor" element={<ListProfessor setShowToast={setShowToast} setToast={setToast}/>} />
+        <Route path="editProfessor/:id" element={<EditProfessor setShowToast={setShowToast} setToast={setToast}/>} />
       </Routes>
     </div>
 
